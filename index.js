@@ -3,6 +3,7 @@ const GitHub = require('github-api');
 const inquirer = require("inquirer");
 const fs = require("fs");
 const pdf = require('html-pdf');
+const colors = require("./colors")
 
 var token = process.env.GHAPITOKEN;
 var gh = new GitHub({
@@ -13,12 +14,14 @@ const questions = [
     {
         type: "input",
         message: "What is your GitHub user name?",
-        name: "username"
+        name: "username",
+        default: "kshep425"
     },
     {
         type: "input",
         message: "What is your favorite color?",
-        name: "color"
+        name: "color",
+        default: "tan"
     }
 ]
 
@@ -28,41 +31,50 @@ function generate_profile() {
         // get username and favorite color
         .prompt(questions)
         .then(function (response) {
+            let valid_username = true
+            let me = gh.getUser(response.username)
 
-            let me = gh.getUser(response.username);
-            let repos = me.listRepos();
-            let profile = me.getProfile()
+            let repos = me.listRepos()
+            let profile = me.getProfile().catch(function (err) {
+                console.error(response.username + " does not exist")
+                valid_username = false;
+            })
+
+            let valid_color = {
+                valid: colors.is_valid(response.color),
+                color: colors.format(response.color)
+            }
 
             // get profile and repos
             Promise.all([repos, profile]).then(function (values) {
+                if (valid_username && valid_color.valid) {
+                    // create profile_data
+                    let profile_data = {
+                        profile_pic_url: values[1].data.avatar_url,
+                        full_name: values[1].data.name,
+                        user_name: values[1].data.login,
+                        location: values[1].data.location,
+                        google_map_link: `https://www.google.com/maps/place/${values[1].data.location}`.replace(/\s+/g, "+"),
+                        github_profile_link: values[1].data.html_url,
+                        blog_link: values[1].data.blog,
+                        bio: values[1].data.bio,
+                        num_repos: values[1].data.public_repos,
+                        num_followers: values[1].data.followers,
+                        num_stars: 0,
+                        num_following: values[1].data.following,
+                        color: valid_color.color
+                    }
 
-                // create profile_data
-                let profile_data = {
-                    profile_pic_url: values[1].data.avatar_url,
-                    full_name: values[1].data.name,
-                    user_name: values[1].data.login,
-                    location: values[1].data.location,
-                    google_map_link: `https://www.google.com/maps/place/${values[1].data.location}`.replace(/\s+/g, "+"),
-                    github_profile_link: values[1].data.html_url,
-                    blog_link: values[1].data.blog,
-                    bio: values[1].data.bio,
-                    num_repos: values[1].data.public_repos,
-                    num_followers: values[1].data.followers,
-                    num_stars: 0,
-                    num_following: values[1].data.following,
-                    color: response.color
-                }
+                    values[0].data.forEach(repo => {
+                        profile_data.num_stars += parseInt(repo.stargazers_count)
+                    })
 
-                values[0].data.forEach(repo => {
-                    profile_data.num_stars += parseInt(repo.stargazers_count)
-                })
+                    //console.log(profile_data);
 
-                //console.log(profile_data);
+                    // update html and css
 
-                // update html and css
-
-                let filename = `${profile_data.user_name}_profile.html`
-                let filename_pdf = `./${profile_data.user_name}_profile.pdf`
+                    let filename = `${profile_data.user_name}_profile.html`
+                    let filename_pdf = `./${profile_data.user_name}_profile.pdf`
 
 
                     let new_html = fs.readFileSync("./template.html", "utf8")
@@ -88,16 +100,24 @@ function generate_profile() {
                         if (err) return console.error(err);
                     });
 
-                    fs.writeFile(filename, new_html, (err) =>{
-                        if(err){
+                    fs.writeFile(filename, new_html, (err) => {
+                        if (err) {
                             console.error(err)
                         }
                     })
 
+                } else {
+                    console.error("Please enter a valid color from this list:\n")
+                    console.log(colors.display())
+                }
             });
 
 
-        }).catch(err => console.error(err));
+        }).catch((err) => {
+            console.log("Something went wrong, please review:")
+            console.error(err)
+
+        });
 
 
 };
