@@ -28,8 +28,8 @@ I WANT a developer profile generator
 SO THAT I can easily prepare reports for stakeholders
 ```
 
-## Video Description
-[Link to Video Description]()
+## How I did this?
+[Link to Slideshow Description](https://docs.google.com/presentation/d/1MqEV4RBMQKCEg7EtcQ99nyRMrjziwIuwP0S10pYCwVY/edit?folder=0ABlcv_5CD-LUUk9PVA#slide=id.g76107f5b16_0_118)
 
 ## Dependencies
 * [HTML](https://www.w3schools.com/html/), [CSS](https://www.w3schools.com/css/default.asp), and [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
