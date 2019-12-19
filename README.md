@@ -41,7 +41,7 @@ SO THAT I can easily prepare reports for stakeholders
 * [Adobe Acrobat Reader DC](https://helpx.adobe.com/reader/get-started.html)
 
 ## Usage
-[Video Directions]()
+[Video Directions](https://drive.google.com/file/d/1w-VjqRdfOW45bDyVx0RyGEHmBbsy_0Jb/view?usp=sharing)
 1. Start the application with the following command:
    ```sh
    node index.js
@@ -53,7 +53,7 @@ SO THAT I can easily prepare reports for stakeholders
    ```
 3. The pdf file is created in the directory the index.js is located.
 
-   Right click, Reveal file in Explorer or Finder
+   Find file in Explorer or Finder
 
    Open the file in the Adobe Acrobat Reader DC or another pdf viewer.
 
