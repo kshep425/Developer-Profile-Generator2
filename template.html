@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content="width=device-width, initial-scale=1">
+    <title class="title name">Resume Profile</title>
+    <!-- Google Font Almendra Style Sheet -->
+    <link href='https://fonts.googleapis.com/css?family=Almendra' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Alef' rel='stylesheet'>
+    <style>
+        html {
+            background-color: ${profile_data.color};
+        }
+
+        #profile {
+            background-color: white;
+            margin: 5% 5% 0 5%;
+            height: 100vh;
+            position: relative
+        }
+
+        header {
+            width: 95%;
+            display: inline-block;
+            text-align: end;
+            font-family: 'Alef';
+            height: 10vh;
+        }
+
+        .logo {
+            float: left;
+            margin-left: 5%;
+        }
+
+        #profile_pic_url {
+            float: right;
+            width: 47.5%;
+            height: 90vh;
+            object-fit: cover;
+        }
+
+        #profile_info {
+            width: 45%;
+            margin-left: 2.5%;
+            margin-right: 2.5%;
+            height: 90vh;
+        }
+
+        #name {
+            font-family: 'Almendra';
+            display: block;
+            text-align: left;
+            margin-left: 5%;
+            font-size: larger;
+        }
+
+        #under_name_links {
+            display: block;
+            margin-bottom: 10vh;
+            text-align: left;
+            font-family: 'Alef';
+            font-size: 12px;
+            font-weight: normal;
+            margin-left: 50%;
+        }
+
+        #username_tag a {
+            /* Make same size as h3 */
+            text-decoration: none;
+        }
+
+        #google_tag a {
+            text-decoration: none;
+        }
+
+        #google_map_link{
+            font-weight: normal;
+        }
+
+        #bio {
+            margin: auto;
+            margin-top: 0px;
+            margin-bottom: 10vh;
+            margin-left: 20%;
+
+            text-align: left;
+            width: 60%;
+            font-family: 'Alef';
+            font-size: 14px;
+        }
+
+        table {
+            width: 70%;
+            margin: auto;
+            margin-bottom: 5%;
+            text-align: center;
+            background-color: whitesmoke;
+        }
+
+        th td {
+            width: 80px;
+        }
+
+        th {
+            font-family: 'Almendra';
+            font-size: 22px;
+        }
+
+        td {
+            font-family: 'Alef';
+            font-size: 16px;
+        }
+
+        .normal {
+            font-weight: normal;
+        }
+
+        .bottom_links {
+            margin-top: 10vh;
+        }
+
+    </style>
+</head>
+
+<body class="template">
+
+
+
+    <div id="profile">
+        <header>
+            <h3 class="logo">KDS Dream Tech / <span class="normal">Stakeholder Report</span></h3>
+            <h3><span id="filename" class="name">${profile_data.full_name}</span>'s Resume Profile</h3>
+        </header>
+        <img id="profile_pic_url" src="${profile_data.profile_pic_url}">
+
+        <div id="profile_info">
+            <h1>
+                <span id="name" class="name">
+                    ${profile_data.full_name}
+                </span>
+            </h1>
+
+            <div id="under_name_links">
+                <h2 id="username_tag">
+                    <a id="github_profile_link" href="${profile_data.github_profile_link}" target="_blank">
+                        <span id="username" class="username normal">
+                            / ${profile_data.user_name}
+                        </span>
+                    </a>
+                </h2>
+
+                <h3 id="google_tag">
+                    <a id="google_map_link" href="${profile_data.google_map_link}" target="_blank">
+                        <span id="location">/ ${profile_data.location}</span>
+                    </a>
+                </h3>
+            </div>
+
+
+            <div id="main_profile">
+                <p id="bio">
+                    ${profile_data.bio}
+                </p>
+
+                <table class="num_counts">
+                    <tr>
+                        <th id="num_repos">${profile_data.num_repos}</th>
+                        <th id="num_followers">${profile_data.num_followers}</th>
+                        <th id="num_stars">${profile_data.num_stars}</th>
+                        <th id="num_following">${profile_data.num_following}</th>
+                    </tr>
+                    <tr>
+                        <td>Repos</td>
+                        <td>Followers</td>
+                        <td>Stars</td>
+                        <td>Following</td>
+                    </tr>
+                </table>
+
+
+                <table class="bottom_links">
+                    <tr>
+
+                        <td>
+                            <a id="github_profile_link" href="${profile_data.github_profile_link}" target="_blank">
+                                Github
+                            </a>
+                        </td>
+
+                        <td>
+                            <a id="google_map_link" href="${profile_data.google_map_link}" target="_blank">
+                                Location
+                            </a>
+                        </td>
+                        <td>
+                            <a id="blog_link" href="${profile_data.blog_link}" target="_blank">
+                                Blog
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
