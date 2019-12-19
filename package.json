@@ -1,7 +1,7 @@
 {
   "name": "developer-profile-generator2",
   "version": "1.0.0",
-  "description": "",
+  "description": "At KDS Dream Tech, the product manager wants to highlight their McDreamy team to stakeholders.  The user story below, describes the issue and solution provided by the Developer Profile Generator tool.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/kshep425/Developer-Profile-Generator2.git"
   },
-  "author": "",
+  "author": "Keisha D. Shepherd",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kshep425/Developer-Profile-Generator2/issues"
