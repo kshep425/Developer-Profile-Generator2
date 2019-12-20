@@ -44,6 +44,16 @@ SO THAT I can easily prepare reports for stakeholders
 [Video Directions](https://drive.google.com/file/d/1w-VjqRdfOW45bDyVx0RyGEHmBbsy_0Jb/view?usp=sharing)
 1. Add your Githup API Token to your path environments: GHAPITOKEN
 
+1. Download or clone or fork the Developer Profile Generator
+
+1. In the DeveloperProfileGenerator folder
+   ```npm init
+      npm install githb-api
+      npm install html-pdf
+      npm install inquirer
+      npm install
+    ```
+
 1. Start the application with the following command:
    ```sh
    node index.js
