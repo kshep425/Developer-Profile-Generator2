@@ -42,6 +42,8 @@ SO THAT I can easily prepare reports for stakeholders
 
 ## Usage
 [Video Directions](https://drive.google.com/file/d/1w-VjqRdfOW45bDyVx0RyGEHmBbsy_0Jb/view?usp=sharing)
+1. Add your Githup API Token to your path environments: GHAPITOKEN
+
 1. Start the application with the following command:
    ```sh
    node index.js
